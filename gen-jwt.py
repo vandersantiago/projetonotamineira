@@ -15,10 +15,12 @@
 # limitations under the License.
 
 """Python script generates a JWT signed with custom private key.
-
+ openssl rsa -in key.pem -pubout > mykey.pub        
+ 
 Example:
+./gen-jwt.py key.pem -jwks=./jwks.json --expire=3153600000 --claims=foo:bar > demo.jwt
 ./gen-jwt.py  --iss example-issuer --aud foo,bar --claims=email:foo@google.com,dead:beef key.pem -listclaim key1 val2 val3 -listclaim key2 val3 val4
-./gen-jwt.py -jwks=./jwks.json --expire=3153600000 --iss notamineira-issuer --aud usuarionotamineira --claims=email:notamineira@fazenda.mg.gov.br key.pem -listclaim notamineira:aplicativo
+./gen-jwt.py -jwks=./jwks.json --expire=3153600000 --iss notamineira-issuer --aud usuarionotamineira --claims=email:notamineira@fazenda.mg.gov.br key.pem -listclaim notamineira:aplicativo >demonm.jwt
 """
 from __future__ import print_function
 import argparse
